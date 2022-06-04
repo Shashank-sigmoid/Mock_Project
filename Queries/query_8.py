@@ -5,7 +5,6 @@ import csv
 
 
 def query_8():
-
     try:
         # Establishing the connection with mongoDB server
         client = pm.MongoClient("mongodb://127.0.0.1:27017")
@@ -32,10 +31,12 @@ def query_8():
                     data_dict = data.to_dict("records")
                     data_to_insert = []
                     for record in data_dict:
-                        entry = {"Country": row[0],
-                                 "Code": row[1],
-                                 "Date": record['Date'],
-                                 "GDP": record['Value']}
+                        entry = {
+                            "Country": row[0],
+                            "Code": row[1],
+                            "Date": record['Date'],
+                            "GDP": record['Value']
+                        }
                         data_to_insert.append(entry)
                     global_economy.insert_many(data_to_insert)
                     print(f"Data for {row[0]} is successfully added to the database...")
