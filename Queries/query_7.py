@@ -7,7 +7,6 @@ import csv
 def query_7():
 
     try:
-
         # Establishing the connection with mongoDB server
         client = pm.MongoClient("mongodb://127.0.0.1:27017")
         print("Connection established successfully...")
