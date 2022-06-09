@@ -7,18 +7,23 @@ def query_6():
 
     try:
         # Establishing the connection with mongoDB server
-        client = pm.MongoClient("mongodb://root:root@127.0.0.1:27017")
+        client = pm.MongoClient("mongodb://127.0.0.1:27017")
         print("Connection established successfully...")
 
-        # Storing the database in variable mydb
+        # Storing the database named "twitter_db" in variable mydb
         mydb = client["twitter_db"]
 
-        # Creating a collection
+        # Creating a collection named "donations"
         donations = mydb["donations"]
 
-        # Fetching data from Covid funding API
+        # Passing the date parameter as today's date
+        # Sending the request to the API server using the Base URL
         response = re.get(f"https://covidfunding.eiu.com/api/funds?date={date.today()}")
+
+        # Converting the response in JSON format
         data = response.json()
+
+        # Ingesting the bulk data in the collection "donations"
         donations.insert_many(data["funds"])
         print("Data added successfully to the Database...")
 
