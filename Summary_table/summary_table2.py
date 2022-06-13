@@ -18,6 +18,11 @@ def summary_table2():
         # Creating a collection named "table2"
         coll2 = mydb["table2"]
 
+        # Checking if table2 is already filled, then deleting the documents
+        if coll2.count_documents({}) != 0:
+            coll2.drop()
+            print("Summary table is cleared...")
+
         # Storing the timestamp of all the tweets from the collection covid_tweets
         timestamp = []
         for doc in coll.find():
