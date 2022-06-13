@@ -6,7 +6,7 @@ def date_conversion():
 
     try:
         # Establishing connection with the MongoDB
-        client = MongoClient("mongodb://localhost:27017")
+        client = MongoClient("mongodb://root:root@mongo:27017")
         print("Connection established successfully...")
 
         # Storing the database named "twitter_db" in variable mydb
