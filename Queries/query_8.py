@@ -38,7 +38,7 @@ def query_8():
                     # Country: (String) Name of the country
                     # Code: (String) Country's code
                     # Date: (Date) Year of the record
-                    # GDP: (INT32) GDP of the country for that given year
+                    # GDP: (Double) GDP of the country for that given year
                     for record in data_dict:
                         entry = {
                             "Country": row[0],
