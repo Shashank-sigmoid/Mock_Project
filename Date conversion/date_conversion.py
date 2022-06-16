@@ -21,18 +21,20 @@ def date_conversion():
         # Converting field "created_at" of collection "covid_tweets" from string to ISO Date format using dateutil
         for doc in coll.find():
             dtime = doc["created_at"]
-            new_datetime = parse(dtime)
-            my_query = {"created_at": doc["created_at"]}
-            new_value = {"$set": {"created_at": new_datetime}}
-            coll.update_one(my_query, new_value)
+            if type(dtime) == str:
+                new_datetime = parse(dtime)
+                my_query = {"created_at": doc["created_at"]}
+                new_value = {"$set": {"created_at": new_datetime}}
+                coll.update_one(my_query, new_value)
 
         # Converting field "created_at" of collection "who_tweets" from string to ISO Date format using dateutil
         for doc in coll1.find():
             dtime = doc["created_at"]
-            new_datetime = parse(dtime)
-            my_query = {"created_at": doc["created_at"]}
-            new_value = {"$set": {"created_at": new_datetime}}
-            coll1.update_one(my_query, new_value)
+            if type(dtime) == str:
+                new_datetime = parse(dtime)
+                my_query = {"created_at": doc["created_at"]}
+                new_value = {"$set": {"created_at": new_datetime}}
+                coll1.update_one(my_query, new_value)
 
         print("Date converted successfully...")
 

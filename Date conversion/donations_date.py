@@ -20,13 +20,13 @@ def date_conversion():
             dtime1 = doc["datePledged"]
             dtime2 = doc["dateConfirmed"]
 
-            if dtime1 != "":
+            if type(dtime1) == int:
                 new_datetime = datetime.fromtimestamp(dtime1)
                 my_query = {"datePledged": doc["datePledged"]}
                 new_value = {"$set": {"datePledged": new_datetime}}
                 coll.update_one(my_query, new_value)
 
-            if dtime2 != "":
+            if type(dtime2) == int:
                 new_datetime = datetime.fromtimestamp(dtime2)
                 my_query = {"dateConfirmed": doc["dateConfirmed"]}
                 new_value = {"$set": {"dateConfirmed": new_datetime}}
